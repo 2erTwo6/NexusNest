@@ -15,6 +15,8 @@
             --accent-hover: #0084ff;
             --card-border: rgba(255, 255, 255, 0.1);
             --transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+            --mscpo-color: #f5a623;
+            --mscpo-hover: #ffb74d;
         }
         
         * {
@@ -100,6 +102,36 @@
         
         .nav-links a:hover::after {
             width: 100%;
+        }
+        
+        /* 优化后的MSCPO按钮样式 */
+        .mscpo-badge {
+            position: relative;
+            color: var(--mscpo-color) !important;
+            font-weight: 500;
+        }
+        
+        .mscpo-badge::before {
+            content: '✓';
+            margin-right: 5px;
+            font-size: 0.9em;
+        }
+        
+        .mscpo-badge::after {
+            background-color: var(--mscpo-color) !important;
+        }
+        
+        .mscpo-link {
+            color: var(--mscpo-color);
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px dashed var(--mscpo-color);
+            transition: var(--transition);
+        }
+        
+        .mscpo-link:hover {
+            color: var(--mscpo-hover);
+            border-bottom-color: transparent;
         }
         
         .hero {
@@ -357,6 +389,23 @@
             font-size: 14px;
         }
         
+        .mscpo-footer {
+            margin-top: 15px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        .mscpo-footer a {
+            color: var(--mscpo-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .mscpo-footer a:hover {
+            color: var(--mscpo-hover);
+            text-decoration: underline;
+        }
+        
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -401,11 +450,11 @@
                     <a href="#features">特色玩法</a>
                     <a href="#details">服务器详情</a>
                     <a href="#join">加入我们</a>
+                    <a href="https://mscpo.top/" target="_blank" class="mscpo-badge">MSCPO认证</a>
                 </div>
             </nav>
         </div>
     </header>
-
     <section class="hero">
         <div class="container">
             <div class="hero-content">
@@ -418,7 +467,6 @@
             </div>
         </div>
     </section>
-
     <section id="about" class="section">
         <div class="container">
             <h2 class="section-title">关于<span>NexusNest</span></h2>
@@ -429,9 +477,9 @@
                     <p class="feature-desc">服务器运行于Mac Mini 2024，提供稳定流畅的游戏体验，即使在高强度生电环境下也能保持优异性能。</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🔧</div>
-                    <h3 class="feature-title">生电优化</h3>
-                    <p class="feature-desc">专为生电玩家优化，搭载地毯模组(Carpet Mod)，提供更多红石与自动化可能性，释放你的创造力。</p>
+                    <div class="feature-icon">🔗</div>
+                    <h3 class="feature-title">MSCPO认证</h3>
+                    <p class="feature-desc">我们已加入<a href="https://mscpo.top/" target="_blank" class="mscpo-link">MSCPO认证服务器计划</a>，遵循社区规范，为您提供更可靠的服务体验。</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🤝</div>
@@ -441,7 +489,6 @@
             </div>
         </div>
     </section>
-
     <section id="details" class="section">
         <div class="container">
             <h2 class="section-title">服务器<span>详情</span></h2>
@@ -473,7 +520,6 @@
             </div>
         </div>
     </section>
-
     <section id="join" class="join-section">
         <div class="container">
             <h2 class="join-title">准备好加入<span>NexusNest</span>了吗？</h2>
@@ -483,7 +529,6 @@
             </a>
         </div>
     </section>
-
     <footer>
         <div class="container">
             <div class="footer-logo">Nexus<span>Nest</span></div>
@@ -494,9 +539,11 @@
                 <a href="#join">加入</a>
             </div>
             <p class="copyright">© 2025 NexusNest 联结之巢. 保留所有权利.</p>
+            <p class="mscpo-footer">
+                本服务器已加入 <a href="https://mscpo.top/" target="_blank">Minecraft Server Community Promotion Organization</a>
+            </p>
         </div>
     </footer>
-
     <script>
         // 平滑滚动
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -534,7 +581,7 @@
         document.querySelectorAll('.section-title, .feature-card, .detail-card, .join-title, .join-desc, .join-btn').forEach(el => {
             observer.observe(el);
         });
-
+        
         // 智能QQ加群功能
         document.getElementById('qqGroupBtn').addEventListener('click', function(e) {
             // 如果是移动设备，尝试使用特定协议链接
